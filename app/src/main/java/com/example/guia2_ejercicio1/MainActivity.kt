@@ -37,7 +37,14 @@ override fun onCreate(savedInstanceState: Bundle?) {
             mostrarToast("Error, Ingrese Nombre y apellido.")
         }
         else {
-            val saludo = "Hola, $nombre $apellido"
+            val calendar = Calendar.getInstance()
+            val hora = calendar.get(Calendar.HOUR_OF_DAY)
+            val esDia = hora in 6..17
+            val saludo = if (esDia){
+                "Hola buenos dillas, $nombre $apellido"
+            } else  {
+                "Hola buenas noches, $nombre $apellido"
+            }
             val mensaje = "Bienvenido al laboratorio 2 de DSM441."
             tvSaludo.text = saludo
             tvMensaje.text = mensaje
