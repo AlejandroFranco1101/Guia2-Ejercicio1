@@ -40,11 +40,18 @@ override fun onCreate(savedInstanceState: Bundle?) {
             val calendar = Calendar.getInstance()
             val hora = calendar.get(Calendar.HOUR_OF_DAY)
             val esDia = hora in 6..17
-            val saludo = if (esDia){
+           /* val saludo = if (esDia){
                 "Hola buenos dillas, $nombre $apellido"
             } else  {
                 "Hola buenas noches, $nombre $apellido"
+            }*/
+
+            val saludo = when (hora) {
+                in 6..11 -> "Hola buenos dillas, $nombre $apellido"
+                in 12..17 -> "Hola buenas tardes en la hora del Zope, $nombre $apellido"
+                else -> "Hola buenas noches, $nombre $apellido"
             }
+
             val mensaje = "Bienvenido al laboratorio 2 de DSM441."
             tvSaludo.text = saludo
             tvMensaje.text = mensaje
