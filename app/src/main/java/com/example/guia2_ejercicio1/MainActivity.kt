@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
 lateinit var btnSaludar: Button
     lateinit var btnLimpiar: Button
     lateinit var etNombre: EditText
+    lateinit var etApellido: EditText
     lateinit var tvSaludo: TextView
     lateinit var tvMensaje: TextView
 // 2. Metodo del ciclo de vida del activity
@@ -22,6 +23,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     btnSaludar = findViewById(R.id.btnSaludar)
     btnLimpiar = findViewById(R.id.btnLimpiar)
     etNombre = findViewById(R.id.etNombre)
+    etApellido = findViewById(R.id.etApellido)
     tvSaludo = findViewById(R.id.tvSaludo)
     tvMensaje = findViewById(R.id.tvMensaje)
     tvSaludo.text = ""
@@ -29,11 +31,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
     // 5. Listeners de los botones
     btnSaludar.setOnClickListener {
         val nombre = etNombre.text.toString().trim()
-        if (nombre.isEmpty()) {
-            mostrarToast("Error, el campo nombre esta vacio.")
+        val apellido = etApellido.text.toString().trim()
+        if (nombre.isEmpty() || apellido.isEmpty()) {
+            mostrarToast("Error, Ingrese Nombre y apellido.")
         }
         else {
-            val saludo = "Hola, $nombre"
+            val saludo = "Hola, $nombre $apellido"
             val mensaje = "Bienvenido al laboratorio 2 de DSM441."
             tvSaludo.text = saludo
             tvMensaje.text = mensaje
